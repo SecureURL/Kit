@@ -17,20 +17,20 @@
 			<div class="menu-icon">
 				<i id = "btn_menubar" class="fa fa-bars"></i>
 			</div>
-			<ul class="menu" id="menu" w3-include-html = "include/Menu.html">
-				
-			</ul>
+			<ul class="menu" id="menu" w3-include-html = "include/Menu.html"></ul>
 		</nav>
 	</header>
 	<main>
-        <div class="hero">
-            <h1>Welcome to My Website</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar bibendum felis, non semper tortor blandit non. Sed congue enim in ipsum posuere, sed dictum risus semper. Nulla tincidunt elit vitae bibendum iaculis. Donec sed nibh risus. Sed vel risus mi. Ut feugiat lobortis est ut feugiat. Aliquam erat volutpat. Vestibulum vel mauris orci. Sed suscipit eget tellus vel tincidunt. Praesent id orci in mauris tincidunt scelerisque non vel justo. Vivamus bibendum tortor quis turpis interdum faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-            <p>Donec lobortis orci quis ligula ultrices varius. Praesent hendrerit lobortis orci vel interdum. Pellentesque in erat nec odio suscipit suscipit. Nullam sit amet augue vel justo semper dignissim. Praesent et enim in augue blandit elementum. Morbi sit amet turpis vel felis consequat euismod a ac lorem. Maecenas eget elit velit. Nulla sit amet condimentum eros. Suspendisse ut semper lorem. Donec consectetur, tortor ac interdum dapibus, mauris sapien consequat lectus, vel euismod mauris mauris vel velit. Sed sit amet arcu euismod, bibendum velit non, rutrum ipsum. Fusce non commodo tellus. Ut pharetra tellus id libero fringilla, eget vehicula risus pharetra.</p>
-            
-        </div>
-		<div class="container">
-			<section class="content" w3-include-html = "include/Tools.html"></section>
+        <div class="container">
+			<section class="content">
+                <h2>Add New Tool</h2>
+                <div class="holder">
+                    <input type="text" name="Home_Title" id="Home_Title" placeholder="Enter Title">
+                    <input type="text" name="Home_PageLink" id="Home_PageLink" placeholder="Enter Page Link">
+                    <input type="text" name="Home_Thumbnail" id="Home_Thumbnail" placeholder="Enter Thumbnail">
+                    <button id ="submit_newTool">Submit</button>
+                </div>
+            </section>
 			<aside class="sidebar" w3-include-html = "include/Sidebar.html"></aside>
 		</div>
 	</main>
