@@ -12,7 +12,7 @@
     <header>
 		<nav>
 			<div class="logo">
-				<a href="#">Safe Site</a>
+				<a href="/Kit">Safe Site</a>
 			</div>
 			<div class="menu-icon">
 				<i id = "btn_menubar" class="fa fa-bars"></i>
@@ -27,10 +27,12 @@
             <h1>Welcome to My Website</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar bibendum felis, non semper tortor blandit non. Sed congue enim in ipsum posuere, sed dictum risus semper. Nulla tincidunt elit vitae bibendum iaculis. Donec sed nibh risus. Sed vel risus mi. Ut feugiat lobortis est ut feugiat. Aliquam erat volutpat. Vestibulum vel mauris orci. Sed suscipit eget tellus vel tincidunt. Praesent id orci in mauris tincidunt scelerisque non vel justo. Vivamus bibendum tortor quis turpis interdum faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
             <p>Donec lobortis orci quis ligula ultrices varius. Praesent hendrerit lobortis orci vel interdum. Pellentesque in erat nec odio suscipit suscipit. Nullam sit amet augue vel justo semper dignissim. Praesent et enim in augue blandit elementum. Morbi sit amet turpis vel felis consequat euismod a ac lorem. Maecenas eget elit velit. Nulla sit amet condimentum eros. Suspendisse ut semper lorem. Donec consectetur, tortor ac interdum dapibus, mauris sapien consequat lectus, vel euismod mauris mauris vel velit. Sed sit amet arcu euismod, bibendum velit non, rutrum ipsum. Fusce non commodo tellus. Ut pharetra tellus id libero fringilla, eget vehicula risus pharetra.</p>
-            
         </div>
 		<div class="container">
-			<section class="content" w3-include-html = "include/Tools.html"></section>
+			<section class="content">
+                <span class="PerIcoLnks">
+                </span>
+            </section>
 			<aside class="sidebar" w3-include-html = "include/Sidebar.html"></aside>
 		</div>
 	</main>
@@ -51,7 +53,28 @@
                 menu.style.display ="none";
         })
     </script>
-
+    
+    <script>
+        var API_HomepageURL = "https://script.google.com/macros/s/AKfycbzXLXw3-5yBTL0oVDNNlIKwUxTte7uOYQg2sNu6OKHuIc9UCnTbBPXwWe-eemvPsvyVaA/exec";
+        var Links_Data = "";
+        var ToolHolder = document.querySelector(".PerIcoLnks");
+        fetch(API_HomepageURL + '?getFullData=true')
+            .then(response => response.json())
+            .then(data => {
+                AllData = Object.values(data.Data);
+                Links_Data = AllData;
+                var Homepage_Links = "";
+                for (i = 0; i < Links_Data.length; i++) {
+                    Homepage_Links += `
+                            <a href="${AllData[i][1]}">
+                                <img src="${AllData[i][2]}" alt="Best Tool, Safe URL Tools, ${AllData[i][0]}">
+                                <p>${AllData[i][0]}</p>
+                            </a>`;
+                }
+                //console.log("Data shown from "+from+" to " + (to-1));
+                ToolHolder.innerHTML += Homepage_Links;
+            })
+    </script>
 <script>
     function includeHTML() {
       var z, i, elmnt, file, xhttp;

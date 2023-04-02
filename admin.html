@@ -12,7 +12,7 @@
     <header>
 		<nav>
 			<div class="logo">
-				<a href="#">Safe Site</a>
+				<a href="/[Project]%20SafeLinks/">Safe Site</a>
 			</div>
 			<div class="menu-icon">
 				<i id = "btn_menubar" class="fa fa-bars"></i>
@@ -23,15 +23,16 @@
 	<main>
         <div class="container">
 			<section class="content">
-                <h2>Add New Tool</h2>
-                <div class="holder">
-                    <input type="text" name="Home_Title" id="Home_Title" placeholder="Enter Title">
-                    <input type="text" name="Home_PageLink" id="Home_PageLink" placeholder="Enter Page Link">
-                    <input type="text" name="Home_Thumbnail" id="Home_Thumbnail" placeholder="Enter Thumbnail">
-                    <button id ="submit_newTool">Submit</button>
+                <div class="toolAdder">
+                    <h2>Add New Tool</h2>
+                    <div class="holder">
+                        <input type="text" name="Home_Title" id="Home_Title" placeholder="Enter Title">
+                        <input type="text" name="Home_PageLink" id="Home_PageLink" placeholder="Enter Page Link">
+                        <input type="text" name="Home_Thumbnail" id="Home_Thumbnail" placeholder="Enter Thumbnail">
+                        <button id ="submit_newTool">Submit</button>
+                    </div>
                 </div>
             </section>
-			<aside class="sidebar" w3-include-html = "include/Sidebar.html"></aside>
 		</div>
 	</main>
 	<footer w3-include-html = "include/Footer.html"> </footer>
@@ -52,7 +53,29 @@
         })
     </script>
 
-<script>
+    <script>
+        var BtnInsertData = document.getElementById("submit_newTool");
+        var API_HomepageURL = "https://script.google.com/macros/s/AKfycbzXLXw3-5yBTL0oVDNNlIKwUxTte7uOYQg2sNu6OKHuIc9UCnTbBPXwWe-eemvPsvyVaA/exec";
+
+        BtnInsertData.addEventListener("click", function () 
+        {
+            var val1 = document.getElementById("Home_Title").value;
+            var val2 = document.getElementById("Home_PageLink").value;
+            var val3 = document.getElementById("Home_Thumbnail").value;
+            fetch(API_HomepageURL + '?addRowData=true&dt1='+val1+'&dt2='+val2+'&dt3='+val3)
+                .then(response => response.json())
+                .then(data => {
+                    InsertDataResponse = data.Data;
+                    alert(InsertDataResponse);
+
+                    document.getElementById("Home_Title").value = "";
+                    document.getElementById("Home_PageLink").value = "";
+                    document.getElementById("Home_Thumbnail").value = "";
+                })
+        });
+    </script>
+
+    <script>
     function includeHTML() {
       var z, i, elmnt, file, xhttp;
       /* Loop through a collection of all HTML elements: */
