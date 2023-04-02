@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+		<nav>
+			<div class="logo">
+				<a href="#">Safe Site</a>
+			</div>
+			<div class="menu-icon">
+				<i id = "btn_menubar" class="fa fa-bars"></i>
+			</div>
+			<ul class="menu" id="menu">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+        <div class="hero">
+            <h1>Welcome to My Website</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar bibendum felis, non semper tortor blandit non. Sed congue enim in ipsum posuere, sed dictum risus semper. Nulla tincidunt elit vitae bibendum iaculis. Donec sed nibh risus. Sed vel risus mi. Ut feugiat lobortis est ut feugiat. Aliquam erat volutpat. Vestibulum vel mauris orci. Sed suscipit eget tellus vel tincidunt. Praesent id orci in mauris tincidunt scelerisque non vel justo. Vivamus bibendum tortor quis turpis interdum faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <p>Donec lobortis orci quis ligula ultrices varius. Praesent hendrerit lobortis orci vel interdum. Pellentesque in erat nec odio suscipit suscipit. Nullam sit amet augue vel justo semper dignissim. Praesent et enim in augue blandit elementum. Morbi sit amet turpis vel felis consequat euismod a ac lorem. Maecenas eget elit velit. Nulla sit amet condimentum eros. Suspendisse ut semper lorem. Donec consectetur, tortor ac interdum dapibus, mauris sapien consequat lectus, vel euismod mauris mauris vel velit. Sed sit amet arcu euismod, bibendum velit non, rutrum ipsum. Fusce non commodo tellus. Ut pharetra tellus id libero fringilla, eget vehicula risus pharetra.</p>
+            
+        </div>
+		<div class="container">
+			<section class="content" w3-include-html = "Tools.html">
+				
+			</section>
+			<aside class="sidebar">
+				<h2>Recent Posts</h2>
+				<ul>
+					<li><a href="#">Post 1</a></li>
+					<li><a href="#">Post 2</a></li>
+					<li><a href="#">Post 3</a></li>
+					<li><a href="#">Post 4</a></li>
+					<li><a href="#">Post 5</a></li>
+				</ul>
+			</aside>
+		</div>
+	</main>
+	<footer>
+        <div class="Foo-container">
+            <div class="legal">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="social">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copy">
+            <p>&copy; 2023 My Website. All rights reserved.</p>
+        </div>
+    </footer>
+    <p id="timer"></p>
+    <script>
+        setInterval(() => {
+            document.querySelector("#timer").innerHTML = Date();
+        }, 1000);
+
+        var menuBtn = document.getElementById("btn_menubar");
+        var menu = document.getElementById("menu");
+        menuBtn.addEventListener("click", () => {
+            console.log(menu.style.display);
+            if(menu.style.display == "none" || menu.style.display == "")
+                menu.style.display = "block";
+            else
+                menu.style.display ="none";
+        })
+    </script>
+
+<script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+
+    includeHTML();
+    </script>
+</body>
+</html>
